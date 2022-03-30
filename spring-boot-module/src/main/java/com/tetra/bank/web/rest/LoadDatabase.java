@@ -20,6 +20,7 @@ public class LoadDatabase
         {
             log.info("Preloading" + repository.save(new Employee("Caribou", "manager")));
             log.info("Preloading" +  repository.save(new Employee("pst", "admin")));
+            //commitTest
         };
     }
 }
