@@ -12,6 +12,7 @@
         <module>core-java-module</module>
         <module>spring-boot-module</module>
         <module>spring-core</module>
+        <module>spring-persistence-module</module>
     </modules>
     <dependencyManagement>
         <dependencies>
