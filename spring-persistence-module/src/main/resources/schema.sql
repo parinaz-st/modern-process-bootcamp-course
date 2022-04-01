@@ -1,5 +1,5 @@
 CREATE TABLE employee (
-    id integer NOT NULL,
+    id SERIAL NOT NULL,
     first_name varchar(30) NOT NULL,
     last_name varchar(30) DEFAULT NULL,
     address varchar(100) DEFAULT NULL,
