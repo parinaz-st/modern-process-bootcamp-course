@@ -13,6 +13,7 @@
         <module>spring-boot-module</module>
         <module>spring-core</module>
         <module>spring-persistence-module</module>
+<!--        <module>spring-jdbc</module>-->
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -23,6 +24,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 </project>
