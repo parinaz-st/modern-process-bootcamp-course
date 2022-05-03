@@ -3,7 +3,7 @@ package com.modern.process.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "post")
+@Table(name = "post" ,schema = "public")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
