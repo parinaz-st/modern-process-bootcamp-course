@@ -24,15 +24,22 @@ public class BankApplication implements CommandLineRunner {
 	private  PostCommentRepository postCommentRepository;
 	@Override
 	public void run(String... args) throws Exception {
-		Post post= new Post();
-		post.setTitle("post_1");
-		postRepository.save(post);
-
-		PostComment postComment = new PostComment();
-		postComment.setReview("goooood");
-		postComment.setComment_date(new Date());
-//		postComment.setCode(11);
-		postComment.setType(CommentType.BAD);
-		postCommentRepository.save(postComment);
+//		Post post= new Post();
+//		post.setTitle("post_1");
+//		postRepository.save(post);
+//
+//		Post post2= new Post();
+//		post2.setTitle("post_2");
+//		postRepository.save(post2);
+//		Post post3= new Post();
+//		post3.setTitle("post_3");
+//		postRepository.save(post3);
+//
+//		PostComment postComment = new PostComment();
+//		postComment.setReview("goooood");
+//		postComment.setComment_date(new Date());
+////		postComment.setCode(11);
+//		postComment.setType(CommentType.BAD);
+//		postCommentRepository.save(postComment);
 	}
 }
