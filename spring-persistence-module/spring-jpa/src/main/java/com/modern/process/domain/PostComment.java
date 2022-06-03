@@ -10,17 +10,34 @@ public class PostComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     @Column(name = "post_review", length = 50, nullable = false)
     private String review;
+
     @Transient
     private int code;
     @Temporal(TemporalType.TIMESTAMP)
     private Date comment_date;
+
+
     @Enumerated(EnumType.STRING)
     private CommentType type;
 
-    public long getId() {
+    @ManyToOne
+    @JoinColumn(name= "post_id")
+    private Post post;
+
+    public PostComment() {
+    }
+
+    public PostComment(Long id, String review,  Date comment_date, CommentType type) {
+        this.id = id;
+        this.review = review;
+        this.comment_date = comment_date;
+        this.type = type;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -55,6 +72,13 @@ public class PostComment {
 
     public void setType(CommentType type) {
         this.type = type;
+    }
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
 }

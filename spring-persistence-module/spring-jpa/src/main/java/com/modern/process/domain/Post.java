@@ -1,7 +1,9 @@
 package com.modern.process.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "post" ,schema = "public")
@@ -24,8 +26,8 @@ public class Post {
     @OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
     PostDetails postDetails;
 
-    @OneToMany
-    List<PostComment> postCommentsList;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    Set<PostComment> postCommentsSet = new HashSet<>();
     public Long getId() {
         return id;
     }
@@ -47,6 +49,19 @@ public class Post {
 
     public void setPostDetails(PostDetails postDetails) {
         this.postDetails = postDetails;
+    }
+    public Set<PostComment> getPostCommentsSet() {
+        return postCommentsSet;
+    }
+
+    public void setPostCommentsSet(Set<PostComment> postCommentsList) {
+        this.postCommentsSet = postCommentsList;
+    }
+
+    public void addComment(PostComment postComment)
+    {
+         postCommentsSet.add(postComment);
+         postComment.setPost(this);
     }
 
 }
