@@ -23,7 +23,7 @@ public class PostDetails {
         this.createdBy = createdBy;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     Post post;
 

@@ -1,6 +1,7 @@
 package com.modern.process.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,11 +24,21 @@ public class Post {
         this.title = title;
     }
 
-    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     PostDetails postDetails;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<PostComment> postCommentsSet = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<PostTag> postTags = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "post_tag",
+//            joinColumns = @JoinColumn(name = "post_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+//    List<Tag> tags = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -63,5 +74,19 @@ public class Post {
          postCommentsSet.add(postComment);
          postComment.setPost(this);
     }
+    public List<PostTag> getPostTags() {
+        return postTags;
+    }
+
+    public void setPostTags(List<PostTag> postTags) {
+        this.postTags = postTags;
+    }
+//    public List<Tag> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(List<Tag> tags) {
+//        this.tags = tags;
+//    }
 
 }
