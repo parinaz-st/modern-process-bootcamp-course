@@ -11,8 +11,10 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "m_office", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"}, name = "name_UNIQUE"), @UniqueConstraint(columnNames = {"opening_date_UNIQUE"})})
 @SequenceGenerator(name = "sequence-generator", initialValue = 1, sequenceName = "Office_sequence")
+@Table(name = "m_office", uniqueConstraints = { @UniqueConstraint(columnNames = {"name"}, name="name_UNIQUE"),
+        @UniqueConstraint(columnNames = {"opening_date"}, name = "opening_date_UNIQUE")})
+//@Table(name = "m_office", uniqueConstraints = {@UniqueConstraint(columnNames = {"name"}, name = "name_UNIQUE"), @UniqueConstraint(columnNames = {"opening_Date"}, name = "opening_Date_UNIQUE")})
 public class Office extends AbstractPersistableCustom implements Serializable {
 
 
