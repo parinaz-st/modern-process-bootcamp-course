@@ -26,9 +26,6 @@ public class OfficeService {
     @Autowired
     OfficeMapper officeMapper;
 //    private final OfficeMapper officeMapper;
-    @Value("${caribou.clinetApp.name}")
-    private String applicationName;
-    private static final  String ENTITY_NAME = "office";
 
     private Logger logger = LoggerFactory.getLogger(OfficeService.class);
 
