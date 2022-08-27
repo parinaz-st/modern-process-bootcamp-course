@@ -65,4 +65,16 @@ public class OfficeService {
         return office;
     }
 
+    public boolean existById(Long id) {
+        return officeRepository.existsById(id);
+    }
+
+    public OfficeDTO update(OfficeDTO officeDTO) {
+
+        logger.debug("Request to Update Office Service: {}" , officeDTO);
+
+        Office officeToBeSaved = officeMapper.toEntity(officeDTO);
+        Office savedOffice = officeRepository.save(officeToBeSaved);
+        return officeMapper.toOfficeDTO(savedOffice);
+    }
 }
