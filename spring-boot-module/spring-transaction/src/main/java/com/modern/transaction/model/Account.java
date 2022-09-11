@@ -13,6 +13,11 @@ public class Account {
     @Column
     private BigDecimal amount;
 
+    public Account(String name, BigDecimal amount) {
+        this.name = name;
+        this.amount = amount;
+    }
+
     public Account(Long id, String name, BigDecimal amount) {
         Id = id;
         this.name = name;
