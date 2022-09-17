@@ -1,4 +1,4 @@
-This Project Contains my coding practice during Caribou Academy Full Stack Bootcamp
+This Project Contains My Coding Practice During Caribou Academy Full Stack Bootcamp
 
 All Codes and Topics Are Discussed At The Link Below (Not Mine ;) :) )
 
