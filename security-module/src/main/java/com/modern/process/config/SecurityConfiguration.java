@@ -1,5 +1,6 @@
 package com.modern.process.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,30 +18,34 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserDetailServiceImpl userDetailService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        super.configure(http);
+        http.httpBasic();
+        http.authorizeRequests().antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/login/**").permitAll()
+        .anyRequest().authenticated().and()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+        .csrf().disable()
+                .headers().frameOptions().disable();
 
     }
 
-    @Override
-    protected UserDetailsService userDetailsService() {
-//        UserDetails user = User.withDefaultPasswordEncoder()
-//                .username("user1")
-//                .password("password")
-//                .roles("user")
-//                .build();
-            return super.userDetailsService();
-    }
-
-    @Override
+        @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder())
-                .withUser("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(passwordEncoder())
+//                .withUser("user")
+//                .password(passwordEncoder().encode("password"))
+//                .roles("USER");
+            auth.userDetailsService(userDetailService)
+                    .passwordEncoder(passwordEncoder());
+
     }
     @Bean
     public PasswordEncoder passwordEncoder()
