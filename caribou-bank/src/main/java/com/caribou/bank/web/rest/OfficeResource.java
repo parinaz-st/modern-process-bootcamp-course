@@ -50,6 +50,14 @@ public class OfficeResource {
 
     }
 
+    /**
+     * {@code PUT/offices}: Updates an existing office.
+     * @param officeDTO the officeDto to update
+     * @return {@link ResponseEntity} with status {@code 200}  and with body the updated Office DTO
+     * or with status {@code 400(Bad Request)}
+     * or with status{@code 500 (Internal Server Error)} if the officeDto couldn't be updated
+     */
+
     @PutMapping("/offices")
     public ResponseEntity<OfficeDTO> updateOffice(@RequestBody OfficeDTO officeDTO)
     {
@@ -60,10 +68,10 @@ public class OfficeResource {
             throw  new BadRequestAlertException("entity not found", ENTITY_NAME, "idnotfound");
         OfficeDTO result =  officeService.update(officeDTO);
 
-        return  ResponseEntity.ok(result);
-//        return  ResponseEntity.ok()
-//                .header(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, officeDTO.getId().toString()))
-//                .body(result);
+//        return  ResponseEntity.ok(result);
+        return  ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, officeDTO.getId().toString()))
+                .body(result);
 
     }
 }

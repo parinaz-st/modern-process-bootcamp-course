@@ -23,7 +23,7 @@ public class HeaderUtil {
     public static HttpHeaders createEntityUpdateAlert(String applicationName, boolean enableTranslation, String entityName, String param) {
 
         String message = enableTranslation ? applicationName  + "." + entityName + ".updated" :
-                "A " + entityName + "is created with identifier "+param;
+                "A " + entityName + "is updated with identifier "+param;
         return  createAlert(applicationName, message, param);
     }
     private static HttpHeaders createAlert(String applicationName, String message, String param) {
@@ -37,4 +37,5 @@ public class HeaderUtil {
         }
         return headers;
     }
+
 }
