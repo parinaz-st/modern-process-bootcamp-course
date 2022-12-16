@@ -15,6 +15,7 @@
         <module>spring-persistence-module</module>
         <module>caribou-bank</module>
         <module>security-module</module>
+        <module>frontend-module</module>
         <!--        <module>spring-jdbc</module>-->
     </modules>
     <dependencyManagement>
